@@ -23,7 +23,7 @@ window.Instagram = {
         var endpoint = this.AUTH_URL + '?client_id=' + this.config.client_id
 									 + '?redirect_uri=' + this.config.redirect_uri
 									 + '?response_type=' + this.config.response_type;
-        this.getHTML( endpoint, callback );
+        this.getJSON( endpoint, callback );
     },
 
     /**
