@@ -5,7 +5,7 @@ window.Instagram = {
     config: {},
 
     BASE_URL: 'https://api.instagram.com/v1',
-    AUTH_URL: 'https://api.instagram.com/oauth/authorize',
+    AUTH_URL: 'https://www.instagram.com/oauth/authorize',
 
     init: function( opt ) {
         opt = opt || {};
