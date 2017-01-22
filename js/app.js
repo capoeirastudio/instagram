@@ -32,6 +32,9 @@ window.Instagram = {
         this.getJSON( endpoint, callback );
     },
 
+    /**
+     * Load jsonp data from the server using a HTTP GET request.
+     */
     getJSON: function( url, callback ) {
         $.ajax({
             type: 'GET',
@@ -41,7 +44,22 @@ window.Instagram = {
                 if ( typeof callback === 'function' ) callback( response );
             }
         });
+    },
+    
+    /**
+     * Load html data from the server using a HTTP GET request.
+     */
+    getHTML: function( url, callback ) {
+        $.ajax({
+            type: 'GET',
+            url: url,
+            dataType: 'html',
+            success: function( response ) {
+                if ( typeof callback === 'function' ) callback( response );
+            }
+        });
     }
+
 };
 
 Instagram.init({
