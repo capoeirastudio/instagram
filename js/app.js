@@ -5,7 +5,7 @@ window.Instagram = {
     config: {},
 
     BASE_URL: 'https://api.instagram.com/v1',
-    AUTH_URL: 'https://www.instagram.com/oauth/authorize',
+    AUTH_URL: 'https://api.instagram.com/oauth/authorize',
 
     init: function( opt ) {
         opt = opt || {};
@@ -85,7 +85,7 @@ $( document ).ready(function() {
     Instagram.authorize(function( response ) {
         var $instagram = $( '#instagram' );
         login = response.data;
-            $instagram.append( '<iframe>' + login + '</iframe>' );
+        $instagram.append( '<iframe>' + login + '</iframe>' );
     });
 
     Instagram.popular(function( response ) {
