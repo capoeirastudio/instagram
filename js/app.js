@@ -17,6 +17,16 @@ window.Instagram = {
     },
 
     /**
+     * Direct user to authorization URL.
+     */
+    authorize: function( callback ) {
+        var endpoint = this.AUTH_URL + '?client_id=' + this.config.client_id
+									 + '?redirect_uri=' + this.config.redirect_uri
+									 + '?response_type=' + this.config.response_type;
+        this.getHTML( endpoint, callback );
+    },
+
+    /**
      * Get a list of popular media.
      */
     popular: function( callback ) {
@@ -72,8 +82,14 @@ Instagram.init({
 
 $( document ).ready(function() {
 
-    Instagram.popular(function( response ) {
+    Instagram.authorize(function( response ) {
         var $instagram = $( '#instagram' );
+        login = response.data;
+            $instagram.append( '<iframe>' + login + '</iframe>' );
+    });
+
+    Instagram.popular(function( response ) {
+        var $iinstagram = $( '#iinstagram' );
         for ( var i = 0; i < response.data.length; i++ ) {
             imageUrl = response.data[i].images.low_resolution.url;
             $instagram.append( '<img src="' + imageUrl + '" />' );
