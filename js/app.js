@@ -5,11 +5,15 @@ window.Instagram = {
     config: {},
 
     BASE_URL: 'https://api.instagram.com/v1',
+    AUTH_URL: 'https://api.instagram.com/oauth/authorize',
 
     init: function( opt ) {
         opt = opt || {};
 
         this.config.client_id = opt.client_id;
+        this.config.client_secret = opt.client_secret;
+        this.config.redirect_uri = opt.redirect_uri;
+        this.config.response_type = opt.response_type;
     },
 
     /**
@@ -41,7 +45,10 @@ window.Instagram = {
 };
 
 Instagram.init({
-    client_id: 'd49da08a520f47cbb6e7618f077f33ef'
+    client_id: '859f4700141047e884c07ea8547e11bb',
+    client_secret: '859f4700141047e884c07ea8547e11bb',
+    redirect_uri: 'https://capoeirastudio.github.io/instagram',
+    response_type: 'code'
 });
 
 
