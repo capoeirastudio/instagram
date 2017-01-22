@@ -83,11 +83,11 @@ Instagram.init({
 
 $( document ).ready(function() {
 
-	var endpoint = this.AUTH_URL + '?client_id=' + this.config.client_id
-					+ '?redirect_uri=' + this.config.redirect_uri
-					+ '?response_type=' + this.config.response_type;
+    Instagram.authorize(function( response ) {
         var $instagram = $( '#instagram' );
-        $instagram.load(endpoint);
+        login = response.data;
+        $instagram.append( '<iframe>' + login + '</iframe>' );
+    });
 
     Instagram.popular(function( response ) {
         var $iinstagram = $( '#iinstagram' );
