@@ -21,9 +21,9 @@ window.Instagram = {
      */
     authorize: function( callback ) {
         var endpoint = this.AUTH_URL + '?client_id=' + this.config.client_id
-									 + '?redirect_uri=' + this.config.redirect_uri
-									 + '?response_type=' + this.config.response_type;
-        this.getJSON( endpoint, callback );
+					+ '?redirect_uri=' + this.config.redirect_uri
+					+ '?response_type=' + this.config.response_type;
+	this.getHTML( endpoint, callback );
     },
 
     /**
@@ -31,7 +31,7 @@ window.Instagram = {
      */
     popular: function( callback ) {
         var endpoint = this.BASE_URL + '/media/popular?client_id=' + this.config.client_id;
-        this.getHTML( endpoint, callback );
+        this.getJSON( endpoint, callback );
     },
 
     /**
@@ -64,6 +64,7 @@ window.Instagram = {
             type: 'GET',
             url: url,
             dataType: 'html',
+	    crossDomain: 'true',
             success: function( response ) {
                 if ( typeof callback === 'function' ) callback( response );
             }
