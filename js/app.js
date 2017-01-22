@@ -73,8 +73,8 @@ window.Instagram = {
 };
 
 Instagram.init({
-    client_id: '859f4700141047e884c07ea8547e11bb',
-    client_secret: '859f4700141047e884c07ea8547e11bb',
+    client_id: '772cbadad1734c838b400ebbe569be69',
+    client_secret: '1cb4d35f48b5443db12d46b70c3aa8d3',
     redirect_uri: 'https://capoeirastudio.github.io/instagram',
     response_type: 'code'
 });
