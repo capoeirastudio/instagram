@@ -27,56 +27,11 @@ window.Instagram = {
     },
 
     /**
-     * Get a list of popular media.
-     */
-    popular: function( callback ) {
-        var endpoint = this.BASE_URL + '/media/popular?client_id=' + this.config.client_id;
-        this.getJSON( endpoint, callback );
-    },
-
-    /**
-     * Get a list of recently tagged media.
-     */
-    tagsByName: function( name, callback ) {
-        var endpoint = this.BASE_URL + '/tags/' + name + '/media/recent?client_id=' + this.config.client_id;
-        this.getJSON( endpoint, callback );
-    },
-
-    /**
      * Change URL.
      */
     changeURL: function( url ) {
         window.location.replace(url);
     },
-	
-    /**
-     * Load jsonp data from the server using a HTTP GET request.
-     */
-    getJSON: function( url, callback ) {
-        $.ajax({
-            type: 'GET',
-            url: url,
-            dataType: 'jsonp',
-            success: function( response ) {
-                if ( typeof callback === 'function' ) callback( response );
-            }
-        });
-    },
-    
-    /**
-     * Load html data from the server using a HTTP GET request.
-     */
-    getHTML: function( url, callback ) {
-        $.ajax({
-            type: 'GET',
-            url: url,
-            dataType: 'html',
-	    crossDomain: 'true',
-            success: function( response ) {
-                if ( typeof callback === 'function' ) callback( response );
-            }
-        });
-    }
 
 };
 
@@ -94,30 +49,6 @@ $( document ).ready(function() {
         var $instagram = $( '#instagram' );
         login = response.data;
         $instagram.append( '<iframe>' + login + '</iframe>' );
-    });
-
-    Instagram.popular(function( response ) {
-        var $iinstagram = $( '#iinstagram' );
-        for ( var i = 0; i < response.data.length; i++ ) {
-            imageUrl = response.data[i].images.low_resolution.url;
-            $instagram.append( '<img src="' + imageUrl + '" />' );
-        }
-    });
-
-    $( '#form' ).on('submit', function( e ) {
-        e.preventDefault();
-
-        var tagName = $( '#search' ).val();
-        Instagram.tagsByName(tagName, function( response ) {
-            var $instagram = $( '#instagram' );
-                $instagram.html('');
-
-            for ( var i = 0; i < response.data.length; i++ ) {
-                imageUrl = response.data[i].images.low_resolution.url;
-                $instagram.append( '<img src="' + imageUrl + '" />' );
-            }
-        });
-
     });
 
 });
